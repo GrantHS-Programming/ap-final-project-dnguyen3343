@@ -9,32 +9,34 @@ public class EnemySpawner : MonoBehaviour
 
 
     [SerializeField]
-    private float smallEnemyInterval = 3f;
+    private float smallEnemyInterval = 10f;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        StartCoroutine(spawnEnemy(smallEnemyInterval,smallEnemyPrefab));
     }
 
     private IEnumerator spawnEnemy(float interval, GameObject enemy)
     {
+        Vector3 temp = new Vector3();
+        temp = spawnCoords();
         yield return new WaitForSeconds(interval);
-
+        GameObject newEnemy = Instantiate(enemy, new Vector3(temp.x,temp.y,temp.z),Quaternion.identity);
+        StartCoroutine(spawnEnemy(interval,enemy));
     }
     public int whichRow()
     {
-        int thisRow = (int) ((Math.Random()*3)+1);
+        int thisRow = (int) ((Random.Range(1,4)));
         return thisRow;
     }
     public int leftOrRight()
     {
-        int x = (int) ((Math.Random()*2));
+        int x = (int) ((Random.Range(0,2)));
         return x;
     }
-    public vector3 spawnCoords()
+    public Vector3 spawnCoords()
     {
-        Vector3 coords = new Vector3();
         int thisRow = whichRow();
         int fromWhere = leftOrRight();
         float x;
@@ -43,30 +45,31 @@ public class EnemySpawner : MonoBehaviour
 
         if (thisRow == 1)
         {
-            x = -0.75f;  
-            z = -5f; 
+            y = -0.75f;  
+            z = 5f; 
         }
         else if (thisRow == 2)
         {
-            x = 1.25f;
-            z = -7f;
+            y = 1.25f;
+            z = 7f;
         }
         else
         {
-            x = 3.25f;
-            z = -9f;
+            y = 3.25f;
+            z = 9f;
         }
         if (fromWhere == 0)
         {
-            y = -9f;
+            x = -9f;
         }
         else 
         {
-            y = 9f;
+            x = 9f;
         }
+        Vector3 coords = new Vector3(x,y,z);
 
 
 
-        return (x,y,z);
+        return coords;
     }
 }

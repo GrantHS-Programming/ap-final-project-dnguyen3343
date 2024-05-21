@@ -16,7 +16,8 @@ private Vector3 target;
     // Start is called before the first frame update
     void Start()
     {
-        chosenLocation = 0;
+        chosenLocation = Random.Range(-8f,8f);
+        target = new Vector3(chosenLocation, transform.position.y, transform.position.z);
         maxHealth = data.hp;
         currentHealth = data.hp;
         damage = data.damage;
@@ -26,12 +27,10 @@ private Vector3 target;
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(chosenLocation);
+        transform.position = Vector3.MoveTowards(transform.position, target ,speed *Time.deltaTime);
         if (transform.position.x == chosenLocation){ 
             chosenLocation = Random.Range(-8f,8f);
+            target = new Vector3(chosenLocation, transform.position.y, transform.position.z);
         }
-        target = new Vector3(chosenLocation, transform.position.y, transform.position.z);
-        transform.position = Vector3.MoveTowards(transform.position, (target) ,speed *Time.deltaTime);
-        
     }
 }

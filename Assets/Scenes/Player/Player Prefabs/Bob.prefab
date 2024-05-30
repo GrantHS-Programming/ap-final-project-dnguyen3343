@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1075709616916377944}
   - component: {fileID: 3860468283700133742}
-  - component: {fileID: 3428641122879783220}
   - component: {fileID: 6030316659462260953}
   m_Layer: 0
   m_Name: Bob
@@ -86,20 +85,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3428641122879783220
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8648603502323157828}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0b8c5c25f56e4cc9bad33eeb52611f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isBurstActive: 0
-  isThisThePlayer: 0
 --- !u!114 &6030316659462260953
 MonoBehaviour:
   m_ObjectHideFlags: 0
